@@ -1,0 +1,165 @@
+{
+  "common": {
+    "siteName": "Rettesteg",
+    "tagline": "Ta det rette steget mot fremtiden din",
+    "cta": {
+      "start": "Start gratis",
+      "learnMore": "Les mer",
+      "tryFree": "Prøv gratis",
+      "getStarted": "Kom i gang",
+      "contactUs": "Kontakt oss",
+      "login": "Logg inn",
+      "register": "Registrer deg"
+    },
+    "nav": {
+      "home": "Hjem",
+      "howItWorks": "Slik fungerer det",
+      "careers": "Yrker",
+      "education": "Utdanning",
+      "forSchools": "For skoler",
+      "pricing": "Priser",
+      "blog": "Blogg",
+      "about": "Om oss"
+    },
+    "footer": {
+      "rights": "Alle rettigheter forbeholdt",
+      "privacy": "Personvern",
+      "terms": "Vilkår",
+      "contact": "Kontakt"
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "Gratis karriereveiledning",
+      "title": "Ta det rette steget",
+      "titleHighlight": "mot fremtiden din",
+      "subtitle": "Finn yrket og utdanningen som passer akkurat deg — basert på vitenskapelig anerkjente tester og norsk utdanningssystem.",
+      "ctaStart": "Start gratis test",
+      "ctaLearn": "Se eksempel",
+      "stats": {
+        "tests": "tester fullført",
+        "careers": "yrker i databasen",
+        "schools": "norske skoler"
+      }
+    },
+    "howItWorks": {
+      "title": "Slik fungerer det",
+      "subtitle": "Tre enkle steg til din personlige karriereanbefaling",
+      "step1": {
+        "title": "Ta testene",
+        "description": "Svar på spørsmål om interesser, personlighet og verdier. Det tar 15–25 minutter."
+      },
+      "step2": {
+        "title": "Få analysen",
+        "description": "Vi analyserer svarene dine og matcher deg mot hundrevis av norske yrker."
+      },
+      "step3": {
+        "title": "Finn veien",
+        "description": "Se hvilken utdanning du trenger og hvordan du kommer deg dit."
+      }
+    },
+    "tools": {
+      "title": "Basert på vitenskapelig metode",
+      "riasec": {
+        "name": "Holland RIASEC",
+        "description": "Verdens mest brukte interessetest — kartlegger seks personlighetstyper og matcher dem mot yrker."
+      },
+      "bigFive": {
+        "name": "Big Five personlighet",
+        "description": "Den mest validerte personlighetstesten — gir innsikt i dine styrker og arbeidsstil."
+      },
+      "values": {
+        "name": "Karriereverdier",
+        "description": "Hva motiverer deg? Finn ut hva som betyr mest for deg i en fremtidig jobb."
+      }
+    },
+    "forSchools": {
+      "title": "For skoler og kommuner",
+      "subtitle": "Gi alle elever tilgang til profesjonell karriereveiledning",
+      "description": "Rettesteg hjelper rådgivere, lærere og karriereveiledere med å gi elevene bedre hjelp — med dataverktøy, rapporter og kohortoversikter.",
+      "cta": "Se løsningen for skoler"
+    },
+    "pricing": {
+      "free": {
+        "name": "Gratis",
+        "price": "0 kr",
+        "description": "For enkeltpersoner som vil utforske",
+        "features": ["RIASEC-interessetest", "Topp 3 yrkesanbefalinger", "Enkel resultatoversikt"]
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "149 kr/mnd",
+        "description": "Full karriereanalyse",
+        "features": ["Alle tre tester", "Topp 10 yrkesanbefalinger", "Detaljerte grafer og analyser", "Utdanningsveier med fagkrav", "PDF-rapport", "Ubegrenset tilgang"]
+      },
+      "org": {
+        "name": "Organisasjon",
+        "price": "Kontakt oss",
+        "description": "For skoler og kommuner",
+        "features": ["Alt i Pro per elev", "Kohortoversikt for rådgiver", "Aggregerte rapporter", "Onboarding og support", "Tilpasset oppsett"]
+      }
+    }
+  },
+  "assessment": {
+    "title": "Karrieretest",
+    "riasecTitle": "Interessetest (RIASEC)",
+    "bigFiveTitle": "Personlighetstest (Big Five)",
+    "valuesTitle": "Karriereverdier",
+    "instructions": "Svar på hvert spørsmål ut fra hvor godt det passer deg på en skala fra 1 (passer ikke) til 5 (passer svært godt).",
+    "scale": {
+      "1": "Passer ikke",
+      "2": "Passer litt",
+      "3": "Nøytral",
+      "4": "Passer godt",
+      "5": "Passer svært godt"
+    },
+    "progress": "Spørsmål {current} av {total}",
+    "next": "Neste",
+    "previous": "Forrige",
+    "submit": "Se resultater",
+    "saving": "Lagrer...",
+    "completed": "Test fullført!"
+  },
+  "results": {
+    "title": "Dine karriereresultater",
+    "riasecTitle": "Dine interesseprofil",
+    "topCareers": "Yrker som passer deg",
+    "topEducation": "Anbefalte utdanninger",
+    "matchScore": "Match",
+    "locked": {
+      "title": "Oppgrader til Pro",
+      "description": "Lås opp full rapport med topp 10 yrker, utdanningsveier, Big Five-analyse og PDF-rapport.",
+      "cta": "Oppgrader nå"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Logg inn",
+      "email": "E-post",
+      "password": "Passord",
+      "submit": "Logg inn",
+      "forgotPassword": "Glemt passord?",
+      "noAccount": "Har du ikke konto?",
+      "register": "Registrer deg"
+    },
+    "register": {
+      "title": "Opprett konto",
+      "fullName": "Fullt navn",
+      "email": "E-post",
+      "password": "Passord (min. 8 tegn)",
+      "submit": "Opprett konto",
+      "hasAccount": "Har du allerede konto?",
+      "login": "Logg inn",
+      "terms": "Ved å registrere deg godtar du våre {terms} og {privacy}."
+    }
+  },
+  "dashboard": {
+    "title": "Min karrieredashboard",
+    "welcome": "Velkommen tilbake, {name}!",
+    "startTest": "Start ny test",
+    "continueTest": "Fortsett test",
+    "viewResults": "Se resultater",
+    "noResults": "Du har ikke tatt noen tester ennå.",
+    "startFirst": "Start din første karrieretest"
+  }
+}

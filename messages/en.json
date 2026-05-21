@@ -1,0 +1,165 @@
+{
+  "common": {
+    "siteName": "Rettesteg",
+    "tagline": "Take the right step towards your future",
+    "cta": {
+      "start": "Start for free",
+      "learnMore": "Learn more",
+      "tryFree": "Try for free",
+      "getStarted": "Get started",
+      "contactUs": "Contact us",
+      "login": "Log in",
+      "register": "Sign up"
+    },
+    "nav": {
+      "home": "Home",
+      "howItWorks": "How it works",
+      "careers": "Careers",
+      "education": "Education",
+      "forSchools": "For schools",
+      "pricing": "Pricing",
+      "blog": "Blog",
+      "about": "About"
+    },
+    "footer": {
+      "rights": "All rights reserved",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "contact": "Contact"
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "Free career guidance",
+      "title": "Take the right step",
+      "titleHighlight": "towards your future",
+      "subtitle": "Discover the career and education that fits you — based on scientifically validated tests and the Norwegian education system.",
+      "ctaStart": "Start free test",
+      "ctaLearn": "See example",
+      "stats": {
+        "tests": "tests completed",
+        "careers": "careers in database",
+        "schools": "Norwegian schools"
+      }
+    },
+    "howItWorks": {
+      "title": "How it works",
+      "subtitle": "Three simple steps to your personal career recommendation",
+      "step1": {
+        "title": "Take the tests",
+        "description": "Answer questions about your interests, personality and values. Takes 15–25 minutes."
+      },
+      "step2": {
+        "title": "Get the analysis",
+        "description": "We analyse your answers and match you against hundreds of Norwegian careers."
+      },
+      "step3": {
+        "title": "Find the path",
+        "description": "See what education you need and exactly how to get there."
+      }
+    },
+    "tools": {
+      "title": "Based on scientific method",
+      "riasec": {
+        "name": "Holland RIASEC",
+        "description": "The world's most used interest test — maps six personality types and matches them to careers."
+      },
+      "bigFive": {
+        "name": "Big Five personality",
+        "description": "The most validated personality test — gives insight into your strengths and work style."
+      },
+      "values": {
+        "name": "Career values",
+        "description": "What motivates you? Find out what matters most to you in a future job."
+      }
+    },
+    "forSchools": {
+      "title": "For schools and municipalities",
+      "subtitle": "Give every student access to professional career guidance",
+      "description": "Rettesteg helps advisors, teachers and career counsellors provide better guidance — with data tools, reports and cohort overviews.",
+      "cta": "See the solution for schools"
+    },
+    "pricing": {
+      "free": {
+        "name": "Free",
+        "price": "0 kr",
+        "description": "For individuals who want to explore",
+        "features": ["RIASEC interest test", "Top 3 career recommendations", "Simple results overview"]
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "149 kr/month",
+        "description": "Full career analysis",
+        "features": ["All three tests", "Top 10 career recommendations", "Detailed graphs and analysis", "Education paths with course requirements", "PDF report", "Unlimited access"]
+      },
+      "org": {
+        "name": "Organisation",
+        "price": "Contact us",
+        "description": "For schools and municipalities",
+        "features": ["Everything in Pro per student", "Cohort overview for counsellor", "Aggregated reports", "Onboarding and support", "Custom setup"]
+      }
+    }
+  },
+  "assessment": {
+    "title": "Career Test",
+    "riasecTitle": "Interest Test (RIASEC)",
+    "bigFiveTitle": "Personality Test (Big Five)",
+    "valuesTitle": "Career Values",
+    "instructions": "Answer each question based on how well it fits you on a scale from 1 (does not fit) to 5 (fits very well).",
+    "scale": {
+      "1": "Does not fit",
+      "2": "Fits a little",
+      "3": "Neutral",
+      "4": "Fits well",
+      "5": "Fits very well"
+    },
+    "progress": "Question {current} of {total}",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "See results",
+    "saving": "Saving...",
+    "completed": "Test completed!"
+  },
+  "results": {
+    "title": "Your career results",
+    "riasecTitle": "Your interest profile",
+    "topCareers": "Careers that suit you",
+    "topEducation": "Recommended educations",
+    "matchScore": "Match",
+    "locked": {
+      "title": "Upgrade to Pro",
+      "description": "Unlock the full report with top 10 careers, education paths, Big Five analysis and PDF report.",
+      "cta": "Upgrade now"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Log in",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Log in",
+      "forgotPassword": "Forgot password?",
+      "noAccount": "Don't have an account?",
+      "register": "Sign up"
+    },
+    "register": {
+      "title": "Create account",
+      "fullName": "Full name",
+      "email": "Email",
+      "password": "Password (min. 8 characters)",
+      "submit": "Create account",
+      "hasAccount": "Already have an account?",
+      "login": "Log in",
+      "terms": "By registering you agree to our {terms} and {privacy}."
+    }
+  },
+  "dashboard": {
+    "title": "My career dashboard",
+    "welcome": "Welcome back, {name}!",
+    "startTest": "Start new test",
+    "continueTest": "Continue test",
+    "viewResults": "View results",
+    "noResults": "You haven't taken any tests yet.",
+    "startFirst": "Start your first career test"
+  }
+}
