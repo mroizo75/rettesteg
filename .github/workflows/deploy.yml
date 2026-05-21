@@ -1,0 +1,44 @@
+name: Deploy til VPS
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    name: Build & deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            set -e
+            cd /opt/rettesteg
+
+            echo "🔄 Henter siste kode..."
+            git pull origin master
+
+            echo "🔨 Bygger Docker-image..."
+            docker compose build app \
+              --build-arg NEXT_PUBLIC_SUPABASE_URL="${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}" \
+              --build-arg NEXT_PUBLIC_SUPABASE_ANON_KEY="${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}" \
+              --build-arg NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY }}" \
+              --build-arg NEXT_PUBLIC_BASE_URL="https://rettesteg.no"
+
+            echo "🚀 Starter tjenester..."
+            docker compose up -d --remove-orphans
+
+            echo "🧹 Rydder opp gamle images..."
+            docker image prune -f
+
+            echo "✅ Deploy fullført!"
