@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import {
   RadarChart, Radar, PolarGrid, PolarAngleAxis,
   PolarRadiusAxis, ResponsiveContainer, Tooltip,
@@ -7,11 +8,37 @@ import {
 import type { RiasecScores } from '@/lib/supabase/types';
 import { riasecDescriptions } from '@/lib/assessments/scoring';
 
-interface Props {
-  scores: RiasecScores;
+interface ChartColors {
+  foreground: string;
+  mutedForeground: string;
+  border: string;
+  card: string;
+  primary: string;
 }
 
-export function RiasecChart({ scores }: Props) {
+function getCssVar(name: string): string {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+function useChartColors(): ChartColors | null {
+  const [colors, setColors] = useState<ChartColors | null>(null);
+
+  useEffect(() => {
+    setColors({
+      foreground: `hsl(${getCssVar('--foreground')})`,
+      mutedForeground: `hsl(${getCssVar('--muted-foreground')})`,
+      border: `hsl(${getCssVar('--border')})`,
+      card: `hsl(${getCssVar('--card')})`,
+      primary: `hsl(${getCssVar('--primary')})`,
+    });
+  }, []);
+
+  return colors;
+}
+
+export function RiasecChart({ scores }: { scores: RiasecScores }) {
+  const colors = useChartColors();
+
   const data = (Object.keys(scores) as (keyof RiasecScores)[]).map((key) => ({
     subject: riasecDescriptions[key].label,
     value: scores[key],
@@ -19,26 +46,33 @@ export function RiasecChart({ scores }: Props) {
     key,
   }));
 
+  if (!colors) {
+    return (
+      <div className="w-full h-72 rounded-xl bg-muted/40 animate-pulse" />
+    );
+  }
+
   return (
     <div className="w-full h-72">
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart data={data}>
-          <PolarGrid gridType="circle" stroke="hsl(var(--border))" />
+        <RadarChart data={data} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
+          <PolarGrid gridType="circle" stroke={colors.border} />
           <PolarAngleAxis
             dataKey="subject"
-            tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))', fontWeight: 500 }}
+            tick={{ fontSize: 12, fill: colors.foreground, fontWeight: 500 }}
           />
           <PolarRadiusAxis
             angle={90}
             domain={[0, 100]}
-            tick={{ fontSize: 10, fill: 'hsl(var(--muted-foreground))' }}
+            tick={{ fontSize: 10, fill: colors.mutedForeground }}
             tickCount={5}
+            stroke={colors.border}
           />
           <Radar
             name="Score"
             dataKey="value"
-            stroke="hsl(var(--primary))"
-            fill="hsl(var(--primary))"
+            stroke={colors.primary}
+            fill={colors.primary}
             fillOpacity={0.2}
             strokeWidth={2}
           />
@@ -48,10 +82,11 @@ export function RiasecChart({ scores }: Props) {
               (props as { payload?: { subject?: string } })?.payload?.subject ?? '',
             ]}
             contentStyle={{
-              background: 'hsl(var(--card))',
-              border: '1px solid hsl(var(--border))',
+              background: colors.card,
+              border: `1px solid ${colors.border}`,
               borderRadius: '8px',
               fontSize: '13px',
+              color: colors.foreground,
             }}
           />
         </RadarChart>
