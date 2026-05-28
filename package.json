@@ -5,11 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3015",
     "lint": "eslint"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
+    "@react-pdf/renderer": "^4.5.1",
     "@stripe/stripe-js": "^9.5.0",
     "@supabase/ssr": "^0.10.3",
     "@supabase/supabase-js": "^2.105.4",

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Logo } from '@/components/Logo';
 
 const links = {
   produkt: [
@@ -29,14 +30,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div>
-            <Link href="/" className="inline-flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">R</span>
-              </div>
-              <span className="font-display font-bold text-xl text-background">
-                rettesteg<span style={{ color: 'var(--lime)' }}>.no</span>
-              </span>
-            </Link>
+            <div className="mb-4">
+              <Logo light href="/" />
+            </div>
             <p className="text-sm text-background/55 leading-relaxed mb-5">
               Ta det rette steget mot fremtiden din. Gratis karriereveiledning for norsk ungdom.
             </p>

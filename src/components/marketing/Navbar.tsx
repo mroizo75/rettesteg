@@ -1,27 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
-function Logo({ light = false }: { light?: boolean }) {
-  return (
-    <Link href="/" className="flex items-center gap-2.5 group">
-      <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-105 transition-transform">
-        <span className="text-primary-foreground font-bold text-sm">R</span>
-      </div>
-      <span className={cn('font-display font-bold text-xl', light ? 'text-white' : 'text-foreground')}>
-        rettesteg
-        <span className={cn(light ? 'text-[var(--lime)]' : 'text-primary')}>.no</span>
-      </span>
-    </Link>
-  );
-}
+import { Logo } from '@/components/Logo';
 
 export function Navbar() {
   const t = useTranslations('common');

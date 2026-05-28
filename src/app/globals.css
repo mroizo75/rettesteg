@@ -179,3 +179,91 @@
   transform: translateY(-2px);
   box-shadow: 0 20px 40px -12px oklch(0.52 0.26 280 / 0.2);
 }
+
+/* ─── PDF / Print-stiler ──────────────────────────────────────────────────── */
+@media print {
+  /* Skjul alt utenom rapport-innholdet */
+  aside,
+  header,
+  footer,
+  nav,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Nullstill layout — full bredde, hvit bakgrunn */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  /* Fjern dashboard-flex og padding */
+  .min-h-screen.flex {
+    display: block !important;
+  }
+
+  main {
+    padding: 0 !important;
+  }
+
+  .max-w-5xl {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Unngå sideskift midt i kort */
+  [data-slot="card"] {
+    break-inside: avoid;
+    border: 1px solid #e5e7eb !important;
+    box-shadow: none !important;
+    margin-bottom: 14pt !important;
+    background: white !important;
+  }
+
+  /* RIASEC-søyler: vis beskrivelse alltid ved utskrift */
+  .group p {
+    display: block !important;
+  }
+
+  /* Ikke bryt barer og yrkesliste */
+  .space-y-3 > div,
+  .space-y-4 > div {
+    break-inside: avoid;
+  }
+
+  /* Badges og outline-rammer OK i svart/hvitt */
+  [data-slot="badge"] {
+    border: 1px solid #9ca3af !important;
+    background: #f3f4f6 !important;
+    color: black !important;
+  }
+
+  /* Ikke vis Pro-upsell-boksen */
+  .bg-primary\/5 {
+    display: none !important;
+  }
+
+  /* Toppheader for PDF */
+  .pdf-header {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12pt;
+    margin-bottom: 16pt;
+    border-bottom: 2px solid #7c3aed;
+  }
+
+  /* Utskrift-knapper og interaktive elementer */
+  a[href] {
+    text-decoration: none !important;
+  }
+
+  /* Søylefarger beholdes ved utskrift */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

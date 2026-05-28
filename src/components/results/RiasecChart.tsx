@@ -1,96 +1,67 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import {
-  RadarChart, Radar, PolarGrid, PolarAngleAxis,
-  PolarRadiusAxis, ResponsiveContainer, Tooltip,
-} from 'recharts';
 import type { RiasecScores } from '@/lib/supabase/types';
 import { riasecDescriptions } from '@/lib/assessments/scoring';
 
-interface ChartColors {
-  foreground: string;
-  mutedForeground: string;
-  border: string;
-  card: string;
-  primary: string;
-}
-
-function getCssVar(name: string): string {
-  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-}
-
-function useChartColors(): ChartColors | null {
-  const [colors, setColors] = useState<ChartColors | null>(null);
-
-  useEffect(() => {
-    setColors({
-      foreground: `hsl(${getCssVar('--foreground')})`,
-      mutedForeground: `hsl(${getCssVar('--muted-foreground')})`,
-      border: `hsl(${getCssVar('--border')})`,
-      card: `hsl(${getCssVar('--card')})`,
-      primary: `hsl(${getCssVar('--primary')})`,
-    });
-  }, []);
-
-  return colors;
-}
-
 export function RiasecChart({ scores }: { scores: RiasecScores }) {
-  const colors = useChartColors();
+  const sorted = (Object.keys(scores) as (keyof RiasecScores)[])
+    .map((key) => ({ key, score: scores[key], ...riasecDescriptions[key] }))
+    .sort((a, b) => b.score - a.score);
 
-  const data = (Object.keys(scores) as (keyof RiasecScores)[]).map((key) => ({
-    subject: riasecDescriptions[key].label,
-    value: scores[key],
-    fullMark: 100,
-    key,
-  }));
-
-  if (!colors) {
-    return (
-      <div className="w-full h-72 rounded-xl bg-muted/40 animate-pulse" />
-    );
-  }
+  const max = Math.max(...sorted.map((d) => d.score), 1);
 
   return (
-    <div className="w-full h-72">
-      <ResponsiveContainer width="100%" height="100%">
-        <RadarChart data={data} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
-          <PolarGrid gridType="circle" stroke={colors.border} />
-          <PolarAngleAxis
-            dataKey="subject"
-            tick={{ fontSize: 12, fill: colors.foreground, fontWeight: 500 }}
-          />
-          <PolarRadiusAxis
-            angle={90}
-            domain={[0, 100]}
-            tick={{ fontSize: 10, fill: colors.mutedForeground }}
-            tickCount={5}
-            stroke={colors.border}
-          />
-          <Radar
-            name="Score"
-            dataKey="value"
-            stroke={colors.primary}
-            fill={colors.primary}
-            fillOpacity={0.2}
-            strokeWidth={2}
-          />
-          <Tooltip
-            formatter={(value, _name, props) => [
-              `${value ?? 0}%`,
-              (props as { payload?: { subject?: string } })?.payload?.subject ?? '',
-            ]}
-            contentStyle={{
-              background: colors.card,
-              border: `1px solid ${colors.border}`,
-              borderRadius: '8px',
-              fontSize: '13px',
-              color: colors.foreground,
-            }}
-          />
-        </RadarChart>
-      </ResponsiveContainer>
+    <div className="space-y-3">
+      {sorted.map(({ key, score, label, color, no }, idx) => (
+        <div key={key} className="group">
+          {/* Topprad: navn + score */}
+          <div className="flex items-center justify-between mb-1.5">
+            <div className="flex items-center gap-2">
+              {/* Rangering */}
+              <span
+                className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold text-white flex-shrink-0"
+                style={{ background: color }}
+              >
+                {idx + 1}
+              </span>
+              <span className="text-sm font-semibold text-foreground">
+                {label}
+              </span>
+              <span className="text-xs text-muted-foreground font-medium">
+                ({key})
+              </span>
+              {idx === 0 && (
+                <span
+                  className="text-[10px] font-bold px-1.5 py-0.5 rounded-full text-white"
+                  style={{ background: color }}
+                >
+                  Sterkest
+                </span>
+              )}
+            </div>
+            <span className="text-sm font-bold tabular-nums" style={{ color }}>
+              {score}%
+            </span>
+          </div>
+
+          {/* Søyle */}
+          <div className="relative h-3 bg-muted rounded-full overflow-hidden">
+            <div
+              className="h-full rounded-full transition-all duration-700"
+              style={{
+                width: `${(score / max) * 100}%`,
+                background: color,
+                opacity: 0.85 + idx * 0.02 > 1 ? 1 : 0.85 - idx * 0.1,
+              }}
+            />
+          </div>
+
+          {/* Beskrivelse (kollapset som standard, vises ved hover/fokus) */}
+          <p className="text-xs text-muted-foreground mt-1 leading-relaxed hidden group-hover:block">
+            {no}
+          </p>
+        </div>
+      ))}
     </div>
   );
 }

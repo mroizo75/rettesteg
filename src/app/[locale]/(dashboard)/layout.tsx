@@ -4,9 +4,10 @@ import { createAdminClient } from '@/lib/supabase/server';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { logoutAction } from '@/actions/auth';
+import { Logo } from '@/components/Logo';
 import {
-  Compass, LayoutDashboard, ClipboardList,
-  BarChart3, User, LogOut,
+  LayoutDashboard, ClipboardList,
+  User, LogOut,
 } from 'lucide-react';
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -37,12 +38,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
     <div className="min-h-screen flex flex-col lg:flex-row bg-muted/30">
       <aside className="w-full lg:w-64 bg-background border-b lg:border-b-0 lg:border-r border-border flex lg:flex-col">
         <div className="px-4 py-4 flex items-center gap-2 border-b border-border">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-md bg-primary flex items-center justify-center">
-              <Compass className="w-4 h-4 text-primary-foreground" />
-            </div>
-            <span className="font-bold">Rettesteg</span>
-          </Link>
+          <Logo size="sm" href="/" />
         </div>
 
         <nav className="flex lg:flex-col gap-1 p-2 flex-1 overflow-x-auto lg:overflow-x-visible">
